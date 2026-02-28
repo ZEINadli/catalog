@@ -14,4 +14,9 @@ class CartProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  void removeAll(){
+    _repository.removeAllItems();
+    notifyListeners();
+  }
+
 }
