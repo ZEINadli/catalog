@@ -8,6 +8,8 @@ class CartRepositoryImpl implements CartRepository {
   List<Product> getCartItems() => List.unmodifiable(_items);
 
   @override
+  void addItems(Product product) => _items.add(product);
+
   @override
   @override
 }
