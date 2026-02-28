@@ -8,11 +8,12 @@ class CartRepositoryImpl implements CartRepository {
   List<Product> getCartItems() => List.unmodifiable(_items);
 
   @override
-  void addItems(Product product) => _items.add(product);
+  void addItem(Product product) => _items.add(product);
 
   @override
   void removeAllItems() => _items.clear();
 
 
   @override
+  bool isItemInCart(String productId) => _items.any((p) => p.id == productId);
 }
