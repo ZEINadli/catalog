@@ -19,4 +19,6 @@ class CartProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+
+  bool isItemInCart(String productId) => _repository.isItemInCart(productId);
 }
