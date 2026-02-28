@@ -9,4 +9,9 @@ class CartProvider extends ChangeNotifier {
 
   List<Product> get items => _repository.getCartItems();
 
+  void addItem(Product product) {
+    _repository.addItem(product);
+    notifyListeners();
+  }
+
 }
