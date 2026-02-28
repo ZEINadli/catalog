@@ -11,5 +11,8 @@ class CartRepositoryImpl implements CartRepository {
   void addItems(Product product) => _items.add(product);
 
   @override
+  void removeAllItems() => _items.clear();
+
+
   @override
 }
