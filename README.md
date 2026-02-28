@@ -72,4 +72,6 @@ flutter run
 
 ## Hasil
 
+![m](https://github.com/user-attachments/assets/0b297aba-634d-483e-bc80-1a12789dcf33)
+![c](https://github.com/user-attachments/assets/80f26866-4b00-46e6-a9b0-2ebaf57d63ec)
 
