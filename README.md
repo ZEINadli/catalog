@@ -1,16 +1,75 @@
-# catalog
+# Catalog
 
-A new Flutter project.
+Aplikasi Flutter sederhana untuk katalog, dirancang dengan **clean architecture**.
 
-## Getting Started
+## 📱 Alur Aplikasi
 
-This project is a starting point for a Flutter application.
+1. **Titik Awal (Entry Point)**
+   - `lib/main.dart` adalah file pertama yang dijalankan saat aplikasi dibuka.
+   - Di sini kita setup dependency injection (biasanya pakai `GetIt`) lewat `injection.dart`.
+   - `MaterialApp` atau `CupertinoApp` diinisialisasi dengan tema dan rute.
 
-A few resources to get you started if this is your first Flutter project:
+2. **Routing & Navigasi**
+   - Semua rute ditaruh di `lib/core/routes/` (misalnya `app_routes.dart`).
+   - Navigasi memakai nama rute supaya kode UI nggak ketergantungan langsung ke implementasinya.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+3. **Modul Fitur**
+   - Setiap fitur (misalnya `cart`) dipisah di folder `lib/features/cart/`.
+   - Tiap fitur punya tiga lapisan untuk mengikuti prinsip clean architecture:
+     - **Presentation**: Kode widget, layar, dan manajemen state (Bloc, Provider, dsb.).
+     - **Domain**: Logika bisnis dan definisi entitas.
+     - **Data**: Repository, data source (remote/local), model.
+   - UI berinteraksi dengan Bloc/Observer, lalu memanggil use case di domain.
+   - Use case memanggil interface repository yang ada di domain.
+   - Implementasi repository di layer data ambil data dari sumber (API, db lokal, dll).
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+4. **Dependency Injection**
+   - `injection.dart` bertugas mendaftarkan semua dependensi.
+   - Dengan cara ini, kita bisa dengan mudah mengganti implementasi saat testing.
+
+5. **State & Tema**
+   - Konfigurasi tema dan style ada di `lib/core/theme/`.
+   - Konstanta global (string, key, dsb.) ada di `lib/core/constants/`.
+
+6. **Contoh Alur Data**
+   - Misal pengguna klik tombol "TAMBAH".
+   - Event dikirim ke Bloc, Bloc memanggil `addItem`.
+   - Use case memanggil interface `CartRepository`.
+   - Implementasi repository menyimpan data ke storage lokal.
+   - Bloc mengeluarkan state baru, dan UI ter-update.
+
+---
+
+## 📁 Struktur Folder (Clean Architecture)
+
+```
+lib/
+├─ core/                    # Utilitas umum, konstanta, tema, rute
+│  ├─ constants/            # Konstanta aplikasi
+│  ├─ routes/               # Definisi rute
+│  └─ theme/                # Tema dan gaya
+├─ features/
+│  ├─ cart/                 # Contoh fitur
+│  │  ├─ data/              # Lapisan data (model, repo, datasource)
+│  │  ├─ domain/            # Lapisan domain (entitas, repo interface)
+│  │  └─ presentation/      # Lapisan presentasi (widget, bloc, layar)
+├─ injection.dart           # Konfigurasi dependency injection
+└─ main.dart                # Titik awal aplikasi
+```
+
+---
+
+## 🛠️ Menjalankan Aplikasi
+
+```bash
+git clone https://github.com/ZEINadli/catalog.git
+cd catalog
+flutter pub get
+flutter run
+```
+
+---
+
+## Hasil
+
+
