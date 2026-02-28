@@ -15,7 +15,7 @@ class CartPage extends StatelessWidget {
       elevation: 0,
       centerTitle: true,
       title: const Text(
-        "Cart",
+        "Keranjang",
         style: TextStyle(fontWeight: FontWeight.bold),
       ),
     ),
@@ -86,22 +86,6 @@ class CartPage extends StatelessWidget {
                         ),
                       );
                     },
-                  ),
-                ),
-
-                const SizedBox(height: 16),
-                Container(
-                  padding: const EdgeInsets.all(16),
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(18),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.05),
-                        blurRadius: 8,
-                        offset: const Offset(0, 4),
-                      )
-                    ],
                   ),
                 ),
 
